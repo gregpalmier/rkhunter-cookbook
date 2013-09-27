@@ -84,7 +84,7 @@ Vagrant.configure("2") do |config|
         }
       },
       :rkhunter => {
-        :report_email => "greg@prometsource.com",
+        :report_email => "you@someemail.com",
         :cron_db_update => "true",
         :cron_daily_run => "true"
       }
