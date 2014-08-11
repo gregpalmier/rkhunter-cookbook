@@ -6,9 +6,6 @@
 #
 # All rights reserved - Redistribute
 #
-include_recipe 'apt'
-include_recipe 'postfix'
-
 package "rkhunter" do
   action :upgrade
 end
