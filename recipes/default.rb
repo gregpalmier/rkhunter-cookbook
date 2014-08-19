@@ -16,20 +16,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package "rkhunter" do
+package 'rkhunter' do
   action :upgrade
 end
 
-template "/etc/default/rkhunter" do
- source "rkhunter.erb"
- owner "root"
- group 0
- mode 00644
+template '/etc/default/rkhunter' do
+  source 'rkhunter.erb'
+  owner 'root'
+  group 0
+  mode 00644
 end
 
-cookbook_file "/etc/rkhunter.conf" do
- source "rkhunter.conf"
- owner "root"
- group 0
- mode 00644
+cookbook_file '/etc/rkhunter.conf' do
+  source 'rkhunter.conf'
+  owner 'root'
+  group 0
+  mode 00644
 end
