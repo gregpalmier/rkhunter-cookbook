@@ -4,10 +4,10 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
-- name: squeeze64
+- name: debian-6.0.10
   driver_config:
-    box: squeeze64
-    box_url: https://s3.amazonaws.com/wa.milton.aws.bucket01/sqeeze.box
+    box: opscode-debian-6.0.10
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-6.0.10_chef-provisionerless.box
 - name: debian-7.1.0
   driver_config:
     box: opscode-debian-7.1.0
@@ -20,16 +20,20 @@ platforms:
   driver_config:
     box: opscode-ubuntu-10.04
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
-- name: centos-6.4
-  driver_config:
-    box: opscode-centos-6.4
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
-- name: centos-5.9
-  driver_config:
-    box: opscode-centos-5.9
-    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
 
 suites:
 - name: default
-  run_list: ["recipe[gregwants]"]
-  attributes: {}
+  run_list: ['recipe[apt]','recipe[postfix]','recipe[rkhunter]']
+  attributes: {
+    postfix: {
+      main: {
+        myhostname: 'example.com'
+      }
+    },
+    rkhunter: {
+      report_email: 'you@example.com',
+      db_update_email: 'true',
+      cron_db_update: 'true',
+      cron_daily_run: 'true'
+    }
+  }
