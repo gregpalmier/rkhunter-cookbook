@@ -214,7 +214,7 @@ WHITELISTED_IS_WHITE=0
 # file, then a value here of 'unset' can be used to avoid warning messages.
 # This option has a default value of 'no'.
 #
-ALLOW_SSH_ROOT_USER=no
+ALLOW_SSH_ROOT_USER=<%= node['rkhunter']['allow_ssh_root_user'] %>
 
 #
 # Set this option to '1' to allow the use of the SSH-1 protocol, but note
