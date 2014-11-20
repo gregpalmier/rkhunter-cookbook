@@ -514,7 +514,9 @@ IMMUTABLE_SET=0
 #ALLOWHIDDENDIR="/dev/.static"
 #ALLOWHIDDENDIR="/dev/.SRC-unix"
 #ALLOWHIDDENDIR="/etc/.etckeeper"
-
+<% node['rkhunter']['allowhiddendir'].each do |item| %>
+ALLOWHIDDENDIR=<%= item %>
+<% end %>
 #
 # Allow the specified hidden files to be whitelisted.
 #
@@ -541,6 +543,9 @@ IMMUTABLE_SET=0
 #ALLOWHIDDENFILE="/usr/share/man/man5/.k5login.5.gz"
 #ALLOWHIDDENFILE="/etc/.gitignore"
 #ALLOWHIDDENFILE="/etc/.bzrignore"
+<% node['rkhunter']['allowhiddenfile'].each do |item| %>
+ALLOWHIDDENFILE=<%= item %>
+<% end %>
 
 #
 # Allow the specified processes to use deleted files. The

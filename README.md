@@ -77,6 +77,18 @@ Attributes
     <td>paths to commands which are allowed to be scripts</td>
     <td><tt>[]</tt></td>
   </tr>
+  <tr>
+    <td><tt>['rkhunter']['allowhiddendir']</tt></td>
+    <td>Array</td>
+    <td>paths to hidden directories for whitelisting</td>
+    <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rkhunter']['allowhiddenfile']</tt></td>
+    <td>Array</td>
+    <td>paths to hidden files for whitelisting</td>
+    <td><tt>[]</tt></td>
+  </tr>
 </table>
 
 Usage
