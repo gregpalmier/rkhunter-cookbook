@@ -9,3 +9,4 @@ default['rkhunter']['run_check_on_battery']	= false
 
 #/etc/rkhunter.conf values
 default['rkhunter']['allow_ssh_root_user'] = 'no'
+default['rkhunter']['scriptwhitelist'] = []

@@ -71,6 +71,12 @@ Attributes
     <td>proper configuration of SSHD's PermitRootLogin option</td>
     <td><tt>no</tt></td>
   </tr>
+  <tr>
+    <td><tt>['rkhunter']['scriptwhitelist']</tt></td>
+    <td>Array</td>
+    <td>paths to commands which are allowed to be scripts</td>
+    <td><tt>[]</tt></td>
+  </tr>
 </table>
 
 Usage

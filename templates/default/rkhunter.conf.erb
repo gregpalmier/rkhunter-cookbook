@@ -484,6 +484,9 @@ SCRIPTWHITELIST=/usr/bin/ldd
 SCRIPTWHITELIST=/usr/bin/lwp-request
 SCRIPTWHITELIST=/usr/sbin/adduser
 SCRIPTWHITELIST=/usr/sbin/prelink
+<% node['rkhunter']['scriptwhitelist'].each do |item| %>
+SCRIPTWHITELIST=<%= item %>
+<% end %>
 
 #
 # Allow the specified commands to have the immutable attribute set.
