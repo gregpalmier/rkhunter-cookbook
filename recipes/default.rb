@@ -27,8 +27,8 @@ template '/etc/default/rkhunter' do
   mode 00644
 end
 
-cookbook_file '/etc/rkhunter.conf' do
-  source 'rkhunter.conf'
+template '/etc/rkhunter.conf' do
+  source 'rkhunter.conf.erb'
   owner 'root'
   group 0
   mode 00644
