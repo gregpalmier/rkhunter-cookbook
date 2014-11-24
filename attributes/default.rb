@@ -12,3 +12,4 @@ default['rkhunter']['allow_ssh_root_user'] = 'no'
 default['rkhunter']['scriptwhitelist'] = []
 default['rkhunter']['allowhiddendir'] = []
 default['rkhunter']['allowhiddenfile'] = []
+default['rkhunter']['port_whitelist'] = []

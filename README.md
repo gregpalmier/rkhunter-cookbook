@@ -89,6 +89,12 @@ Attributes
     <td>paths to hidden files for whitelisting</td>
     <td><tt>[]</tt></td>
   </tr>
+  <tr>
+    <td><tt>['rkhunter']['port_whitelist']</tt></td>
+    <td>Array</td>
+    <td>paths and/or network ports to whitelist</td>
+    <td><tt>[]</tt></td>
+  </tr>
 </table>
 
 Usage

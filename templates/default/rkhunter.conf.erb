@@ -797,6 +797,9 @@ SUSPSCAN_THRESH=200
 # the 'lsof' command must be present.
 #
 #PORT_WHITELIST=""
+<% node['rkhunter']['port_whitelist'].each do |item| %>
+PORT_WHITELIST="<%= item %>"
+<% end %>
 
 #
 # The following option can be used to tell rkhunter where the operating
