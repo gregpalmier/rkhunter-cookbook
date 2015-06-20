@@ -4,3 +4,4 @@ metadata
 
 cookbook 'apt'
 cookbook 'postfix'
+cookbook 'yum'
