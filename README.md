@@ -7,11 +7,16 @@ A Chef cookbook for installing and configuring rkhunter
 
 Requirements
 ------------
-Chef.
+
+1.  Install [ChefDK](https://downloads.chef.io/chef-dk/)
+2.  Install [Vagrant](https://www.vagrantup.com)
+3.  Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+4.  Install the vagrant-omnibus plugin with `vagrant plugin install vagrant-omnibus`
+5.  Install the vagrant-berkshelf plugin with `vagrant plugin install vagrant-berkshelf`
 
 Platforms
 ---------
-So far, only tested with a Debian 6 Vagrant Box.
+Fedora, Debian, Ubuntu.
 
 Attributes
 ----------
@@ -99,7 +104,7 @@ Attributes
 
 Usage
 -----
-Just include `rkhunter` in your node's `run_list` OR create a simple role:
+Include `rkhunter` in your node's `run_list` OR create a simple role:
 
 ```json
 name "rkhunter"
@@ -127,5 +132,4 @@ Contributing
 License and Authors
 -------------------
 License: Apache
-Authors: Greg Palmier
-
+Authors: Greg Palmier, [Michael Burns](https://github.com/mburns).
