@@ -43,7 +43,7 @@ Attributes
   </tr>
   <tr>
     <td><tt>['rkhunter']['report_email']</tt></td>
-    <td>string</td>
+    <td>String</td>
     <td>email address to report to</td>
     <td><tt>root</tt></td>
   </tr>
@@ -55,15 +55,45 @@ Attributes
   </tr>
   <tr>
     <td><tt>['rkhunter']['nice']</tt></td>
-    <td>string</td>
+    <td>String</td>
     <td>niceness of run-level</td>
     <td><tt>0</tt></td>
   </tr>
   <tr>
     <td><tt>['rkhunter']['run_check_on_battery']</tt></td>
-    <td>string</td>
+    <td>String</td>
     <td>potentially run while on battery</td>
     <td><tt>false</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rkhunter']['allow_ssh_root_user']</tt></td>
+    <td>String</td>
+    <td>proper configuration of SSHD's PermitRootLogin option</td>
+    <td><tt>no</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rkhunter']['scriptwhitelist']</tt></td>
+    <td>Array</td>
+    <td>paths to commands which are allowed to be scripts</td>
+    <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rkhunter']['allowhiddendir']</tt></td>
+    <td>Array</td>
+    <td>paths to hidden directories for whitelisting</td>
+    <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rkhunter']['allowhiddenfile']</tt></td>
+    <td>Array</td>
+    <td>paths to hidden files for whitelisting</td>
+    <td><tt>[]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['rkhunter']['port_whitelist']</tt></td>
+    <td>Array</td>
+    <td>paths and/or network ports to whitelist</td>
+    <td><tt>[]</tt></td>
   </tr>
 </table>
 

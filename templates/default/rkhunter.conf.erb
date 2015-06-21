@@ -214,7 +214,7 @@ WHITELISTED_IS_WHITE=0
 # file, then a value here of 'unset' can be used to avoid warning messages.
 # This option has a default value of 'no'.
 #
-ALLOW_SSH_ROOT_USER=no
+ALLOW_SSH_ROOT_USER=<%= node['rkhunter']['allow_ssh_root_user'] %>
 
 #
 # Set this option to '1' to allow the use of the SSH-1 protocol, but note
@@ -484,6 +484,9 @@ SCRIPTWHITELIST=/usr/bin/ldd
 SCRIPTWHITELIST=/usr/bin/lwp-request
 SCRIPTWHITELIST=/usr/sbin/adduser
 SCRIPTWHITELIST=/usr/sbin/prelink
+<% node['rkhunter']['scriptwhitelist'].each do |item| %>
+SCRIPTWHITELIST=<%= item %>
+<% end %>
 
 #
 # Allow the specified commands to have the immutable attribute set.
@@ -511,7 +514,9 @@ IMMUTABLE_SET=0
 #ALLOWHIDDENDIR="/dev/.static"
 #ALLOWHIDDENDIR="/dev/.SRC-unix"
 #ALLOWHIDDENDIR="/etc/.etckeeper"
-
+<% node['rkhunter']['allowhiddendir'].each do |item| %>
+ALLOWHIDDENDIR=<%= item %>
+<% end %>
 #
 # Allow the specified hidden files to be whitelisted.
 #
@@ -538,6 +543,9 @@ IMMUTABLE_SET=0
 #ALLOWHIDDENFILE="/usr/share/man/man5/.k5login.5.gz"
 #ALLOWHIDDENFILE="/etc/.gitignore"
 #ALLOWHIDDENFILE="/etc/.bzrignore"
+<% node['rkhunter']['allowhiddenfile'].each do |item| %>
+ALLOWHIDDENFILE=<%= item %>
+<% end %>
 
 #
 # Allow the specified processes to use deleted files. The
@@ -789,6 +797,9 @@ SUSPSCAN_THRESH=200
 # the 'lsof' command must be present.
 #
 #PORT_WHITELIST=""
+<% node['rkhunter']['port_whitelist'].each do |item| %>
+PORT_WHITELIST="<%= item %>"
+<% end %>
 
 #
 # The following option can be used to tell rkhunter where the operating
