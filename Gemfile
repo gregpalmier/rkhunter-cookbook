@@ -14,8 +14,14 @@ gem 'berkshelf'
 #   gem "vagrant-omnibus", github: "schisamo/vagrant-omnibus"
 # end
 
-gem 'test-kitchen'
-gem 'kitchen-vagrant'
-gem 'foodcritic'
-gem 'rubocop'
-gem 'rspec'
+group :style do
+  gem 'foodcritic'
+  gem 'rubocop'
+end
+
+group :test do
+  gem 'chefspec'
+  gem 'rspec'
+  gem 'test-kitchen'
+  gem 'kitchen-vagrant'
+end
