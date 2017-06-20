@@ -11,7 +11,7 @@ describe 'rkhunter::default' do
     expect(chef_run).to create_template('/etc/default/rkhunter').with(
       :user => 'root',
       :group => 0,
-      :mode => 00644
+      :mode => '0644'
     )
   end
 
@@ -19,7 +19,7 @@ describe 'rkhunter::default' do
     expect(chef_run).to create_template('/etc/rkhunter.conf').with(
       :user => 'root',
       :group => 0,
-      :mode => 00644
+      :mode => '0644'
     )
   end
 end

@@ -1,6 +1,5 @@
-# encoding: UTF-8
-# -*- mode: ruby -*-
 # vi: set ft=ruby :
+# -*- mode: ruby -*-
 
 namespace :style do
   begin
@@ -26,7 +25,7 @@ namespace :style do
 end
 
 desc 'Run all style checks'
-task :style => %w(style:chef style:ruby)
+task :style => %w[style:chef style:ruby]
 
 task :unit do
   sh "bundle exec 'rspec ./test/unit/spec/ --color --format documentation'"
@@ -45,6 +44,6 @@ task :integration do
 end
 
 desc 'Run tests on Travis'
-task :ci => %w(style)
+task :ci => %w[style]
 
-task :default => %w(style unit integration)
+task :default => %w[style unit integration]
