@@ -21,7 +21,6 @@ config['scriptwhitelist'] = %w[
   /bin/which
   /usr/bin/groups
   /usr/bin/ldd
-  /usr/bin/lwp-request
   /usr/sbin/adduser
 ]
 config['allowhiddendir'] = %w[
