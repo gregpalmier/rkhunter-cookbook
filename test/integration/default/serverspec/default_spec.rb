@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # License:: Apache License, Version 2.0
 #
 
@@ -8,7 +7,7 @@ describe package('rkhunter') do
   it { should be_installed   }
 end
 
-describe file('/etc/default/rkhunter') do
+describe file('/etc/default/rkhunter'), :if => %w[debian ubuntu].include?(os[:family]) do
   it { should be_file }
   it { should be_mode '644' }
   it { should be_owned_by 'root' }
@@ -18,8 +17,16 @@ describe file('/etc/default/rkhunter') do
   its(:content) { should match(/^REPORT_EMAIL=you@example.com/) }
 end
 
-describe file('/etc/rkhunter.conf') do
+describe file('/etc/sysconfig/rkhunter'), :if => os[:family] == 'redhat' do
   it { should be_file }
   it { should be_mode '644' }
+  it { should be_owned_by 'root' }
+  its(:content) { should match(/^MAILTO=you@example.com/) }
+  its(:content) { should match(/^DIAG_SCAN=no/) }
+end
+
+describe file('/etc/rkhunter.conf') do
+  it { should be_file }
+  it { should be_mode '640' }
   it { should be_owned_by 'root' }
 end

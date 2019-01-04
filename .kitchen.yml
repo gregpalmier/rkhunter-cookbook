@@ -4,16 +4,16 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
-  - name: fedora-21
+  - name: centos-7.3
     run_list:
     - recipe[yum]
-  - name: ubuntu-12.04
+  - name: debian-8.7
     run_list:
     - recipe[apt]
-  - name: ubuntu-14.04
+  - name: fedora-25
     run_list:
-    - recipe[apt]
-  - name: debian-7.1.0
+    - recipe[yum]
+  - name: ubuntu-16.04
     run_list:
     - recipe[apt]
 
@@ -29,9 +29,14 @@ suites:
       }
     },
     rkhunter: {
-      report_email: 'you@example.com',
-      db_update_email: 'true',
-      cron_db_update: 'true',
-      cron_daily_run: 'true'
+      debian: {
+        report_email: 'you@example.com',
+        db_update_email: true,
+        cron_db_update: true,
+        cron_daily_run: true
+      },
+      rhel: {
+        mailto: 'you@example.com'
+      }
     }
   }

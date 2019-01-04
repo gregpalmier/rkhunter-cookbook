@@ -16,106 +16,63 @@ Requirements
 
 Platforms
 ---------
-Fedora, Debian, Ubuntu.
+
+Fedora, RHEL, Debian, Ubuntu.
 
 Attributes
 ----------
+
+All attributes are nested under the `rkhunter` key.
+
 #### rkhunter::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['cron_daily_run']</tt></td>
-    <td>Boolean</td>
-    <td>whether to run daily</td>
-    <td><tt>true</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['cron_db_update']</tt></td>
-    <td>Boolean</td>
-    <td>whether to update db weekly</td>
-    <td><tt>true</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['db_update_email']</tt></td>
-    <td>Boolean</td>
-    <td>enable reports of weekly database updates</td>
-    <td><tt>true</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['report_email']</tt></td>
-    <td>String</td>
-    <td>email address to report to</td>
-    <td><tt>root</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['apt_autogen']</tt></td>
-    <td>Boolean</td>
-    <td>enable automatic database updates</td>
-    <td><tt>false</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['nice']</tt></td>
-    <td>String</td>
-    <td>niceness of run-level</td>
-    <td><tt>0</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['run_check_on_battery']</tt></td>
-    <td>String</td>
-    <td>potentially run while on battery</td>
-    <td><tt>false</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['allow_ssh_root_user']</tt></td>
-    <td>String</td>
-    <td>proper configuration of SSHD's PermitRootLogin option</td>
-    <td><tt>no</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['scriptwhitelist']</tt></td>
-    <td>Array</td>
-    <td>paths to commands which are allowed to be scripts</td>
-    <td><tt>[]</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['allowhiddendir']</tt></td>
-    <td>Array</td>
-    <td>paths to hidden directories for whitelisting</td>
-    <td><tt>[]</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['allowhiddenfile']</tt></td>
-    <td>Array</td>
-    <td>paths to hidden files for whitelisting</td>
-    <td><tt>[]</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['rkhunter']['port_whitelist']</tt></td>
-    <td>Array</td>
-    <td>paths and/or network ports to whitelist</td>
-    <td><tt>[]</tt></td>
-  </tr>
-</table>
+
+Non-nil attributes defined under `['rkhunter']['config']` are used to construct `rkhunter.conf`. The key names are upper-cased so `['rkhunter']['config']['auto_x_detect'] = 1` becomes `AUTO_X_DETECT=1`. For options that can be specified more than once, including `enable_tests` and `disable_tests`, use an array. There are far too many configuration options to list here so check the [sample configuration file](http://rkhunter.cvs.sourceforge.net/viewvc/rkhunter/rkhunter/files/rkhunter.conf) that ships with rkhunter.
+
+Debian's configuration file largely follows the upstream defaults while RHEL's adds many paths for a better out-of-box experience. This cookbook mostly defaults to the RHEL values but some of these are only applied to RHEL and Fedora. See the attributes file for details.
+
+#### rkhunter::debian
+
+Attributes to control the execution of rkhunter on Debian.
+
+Key | Type | Description | Default
+--- | ---- | ----------- | -------
+`['debian']['cron_daily_run']` | Boolean | whether to run daily | `true`
+`['debian']['cron_db_update']` | Boolean | whether to update db weekly | `true`
+`['debian']['db_update_email']` | Boolean | enable reports of weekly database updates | `false`
+`['debian']['report_email']` | String | email address to report to | `root`
+`['debian']['apt_autogen']` | Boolean | enable automatic database updates | `false`
+`['debian']['nice']` | Integer | niceness of run-level | `0`
+`['debian']['run_check_on_battery']` | Boolean | potentially run while on battery | `false`
+
+#### rkhunter::rhel
+
+Attributes to control the execution of rkhunter on RHEL and Fedora.
+
+Key | Type | Description | Default
+--- | ---- | ----------- | -------
+`['rhel']['mailto']` | String | email address to report to | `root`
+`['rhel']['diag_scan']` | String | perform detailed report scan (yes/no) | `no`
 
 Usage
 -----
+
 Include `rkhunter` in your node's `run_list` OR create a simple role:
 
-```json
-name "rkhunter"
-description "rkhunter config"
+```ruby
+name 'rkhunter'
+description 'rkhunter config'
+
 run_list(
-    "recipe[rkhunter]",
+  'recipe[rkhunter]',
 )
 
 default_attributes(
-    :rkhunter => { :db_update_email => "true",
-                   :report_email => "your@email.com" }
+  :rkhunter => {
+    :debian {
+      :db_update_email => true,
+      :report_email => 'your@email.com'
+    }
+  }
 )
 ```
 
@@ -131,5 +88,6 @@ Contributing
 
 License and Authors
 -------------------
+
 License: Apache
-Authors: Greg Palmier, [Michael Burns](https://github.com/mburns).
+Authors: Greg Palmier, [Michael Burns](https://github.com/mburns), [James Le Cuirot](https://github.com/chewi).

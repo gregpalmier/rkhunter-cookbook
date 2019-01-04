@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure('2') do |config|
+Vagrant.configure('2') do |config| # rubocop:disable Metrics/BlockLength
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
@@ -76,10 +76,15 @@ Vagrant.configure('2') do |config|
         }
       },
       :rkhunter => {
-        :report_email => 'you@someemail.com',
-        :db_update_email => 'true',
-        :cron_db_update => 'true',
-        :cron_daily_run => 'true'
+        :debian => {
+          :report_email => 'you@example.com',
+          :db_update_email => true,
+          :cron_db_update => true,
+          :cron_daily_run => true
+        },
+        :rhel => {
+          :mailto => 'you@example.com'
+        }
       }
     }
 

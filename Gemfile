@@ -21,7 +21,7 @@ end
 
 group :test do
   gem 'chefspec'
+  gem 'kitchen-vagrant'
   gem 'rspec'
   gem 'test-kitchen'
-  gem 'kitchen-vagrant'
 end
